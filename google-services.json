@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "158163042994",
+    "project_id": "styleconnect-3870a",
+    "storage_bucket": "styleconnect-3870a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158163042994:android:800ffbffa787ae42ab3fab",
+        "android_client_info": {
+          "package_name": "com.style.connect.saloon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158163042994-itbqubh5eikn4st9f2djm0ivrm9pioql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzlvyPCUrTWX2y8awYnWt2ihFSqPNUqMM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158163042994-itbqubh5eikn4st9f2djm0ivrm9pioql.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
