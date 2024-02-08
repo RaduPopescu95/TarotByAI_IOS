@@ -33,11 +33,12 @@ import {
   TestIds,
   AdEventType,
 } from "react-native-google-mobile-ads";
+import * as Analytics from "expo-firebase-analytics";
 
-// const adUnitId = __DEV__
-//   ? TestIds.INTERSTITIAL
-//   : "ca-app-pub-9577714849380446/5660268593";
-const adUnitId = "ca-app-pub-9577714849380446/5660268593";
+const adUnitId = __DEV__
+  ? TestIds.INTERSTITIAL
+  : "ca-app-pub-9577714849380446/5660268593";
+// const adUnitId = "ca-app-pub-9577714849380446/5660268593";
 
 const interstitial = InterstitialAd.createForAdRequest(adUnitId, {
   keywords: ["spiritualitate", "bunăstare"],
@@ -96,23 +97,23 @@ const ClinicDashboard = () => {
     },
   ];
 
-  useEffect(() => {
-    console.log("asdsa");
-    console.log(zilnicCitateMotivationale);
-    // console.log("asdsa");
-    const screenWidth = Dimensions.get("window").width;
+  // useEffect(() => {
+  //   console.log("asdsa");
+  //   console.log(zilnicCitateMotivationale);
+  //   // console.log("asdsa");
+  //   const screenWidth = Dimensions.get("window").width;
 
-    // Inițializarea animațiilor doar dacă nu au fost setate anterior
-    if (initialAnimations.every((elem) => elem === null)) {
-      initialAnimations.forEach((_, index) => {
-        initialAnimations[index] = new Animated.Value(screenWidth);
-      });
+  //   // Inițializarea animațiilor doar dacă nu au fost setate anterior
+  //   if (initialAnimations.every((elem) => elem === null)) {
+  //     initialAnimations.forEach((_, index) => {
+  //       initialAnimations[index] = new Animated.Value(screenWidth);
+  //     });
 
-      setCardAnimations(initialAnimations);
+  //     setCardAnimations(initialAnimations);
 
-      animateCard(0); // Începe animația pentru primul card
-    }
-  }, []);
+  //     animateCard(0); // Începe animația pentru primul card
+  //   }
+  // }, []);
 
   useEffect(() => {}, [language]);
 
@@ -144,6 +145,14 @@ const ClinicDashboard = () => {
   const screenHeight = Dimensions.get("window").height;
 
   useEffect(() => {
+    const logScreenView = async () => {
+      await Analytics.logEvent("screen_view", {
+        screen_name: "Main Dashboard",
+      });
+    };
+
+    logScreenView().catch((error) => console.error(error));
+
     const loadListener = interstitial.addAdEventListener(
       AdEventType.LOADED,
       () => {

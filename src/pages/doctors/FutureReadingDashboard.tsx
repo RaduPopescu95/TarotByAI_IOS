@@ -26,6 +26,7 @@ import {
   H8fontMediumWhite,
 } from "../../components/commonText";
 import { useLanguage } from "../../context/LanguageContext";
+import * as Analytics from "expo-firebase-analytics";
 
 const FutureReadingDashboard = () => {
   const [cardAnimations, setCardAnimations] = useState([]);
@@ -65,6 +66,13 @@ const FutureReadingDashboard = () => {
   const isFirstEntry = useRef(true);
 
   useEffect(() => {
+    const logScreenView = async () => {
+      await Analytics.logEvent("screen_view", {
+        screen_name: "Future Dashboard",
+      });
+    };
+
+    logScreenView().catch((error) => console.error(error));
     if (isFirstEntry.current) {
       setLoading(true);
       shuffleCartiViitor();
