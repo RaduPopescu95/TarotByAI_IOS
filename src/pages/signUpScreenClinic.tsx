@@ -7,7 +7,7 @@ import {
   Alert,
   ImageBackground,
   KeyboardAvoidingView,
-  Platform,
+  Text,
 } from "react-native";
 import { Button, SocialMediaLogin } from "../components/commonButton";
 import { GeneralProps } from "../interfaces/generalProps";
@@ -72,7 +72,7 @@ import CustomLoader from "../components/customLoader";
 import { TouchableWithoutFeedback } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import axios from "axios";
-import { Snackbar } from "react-native-paper";
+import { Checkbox, Snackbar } from "react-native-paper";
 import SnackBar from "../components/SnackBar";
 import { handleFirebaseAuthError } from "../utils/authUtils";
 import { useAuth } from "../context/AuthContext";
@@ -106,6 +106,7 @@ const SignUpScreenClinic: React.FC<Props> = ({ navigation }): JSX.Element => {
   const [message, setMessage] = useState("email");
   const [isLoading, setIsLoading] = useState(false);
   const [showSnackback, setShowSnackback] = useState(false);
+  const [isChecked, setChecked] = useState(false);
   const { setUserData } = useAuth();
 
   let pwd = watch("password");
@@ -151,7 +152,7 @@ const SignUpScreenClinic: React.FC<Props> = ({ navigation }): JSX.Element => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <TouchableWithoutFeedback onPress={() => console.log("ass")}>
       <Fragment>
         <MainContainer>
           <CustomLoader isLoading={isLoading} />
@@ -164,154 +165,198 @@ const SignUpScreenClinic: React.FC<Props> = ({ navigation }): JSX.Element => {
             style={styles.gradient}
           >
             <KeyboardAvoidingView
-              style={{ flex: 1, paddingBottom: "0%" }}
+              style={{ flex: 1, marginTop: "10%" }}
               keyboardVerticalOffset={65}
-              behavior={Platform.OS === "ios" ? "padding" : "height"}
             >
-              <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-                <View style={styles.subContainer}>
+              <View style={[styles.subContainer]}>
+                <View
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+
+                    height: 100,
+                  }}
+                >
+                  <H6fontBoldWhite>{i18n.translate("signUp")}</H6fontBoldWhite>
+
+                  <Image
+                    source={require("../../assets/headerIcon.png")}
+                    style={{ width: 200, height: 100 }}
+                    resizeMode="contain" // Aceasta va asigura că întreaga imagine se va încadra în spațiul disponibil, păstrând proporțiile.
+                  />
+                </View>
+
+                <View>
+                  {registerType === "email" && (
+                    <Controller
+                      name={formKeys.firstName}
+                      control={control}
+                      render={({ field: { onChange, value } }) => (
+                        <InputFields
+                          errorMessage={errors[
+                            formKeys.firstName
+                          ]?.message.toString()}
+                          value={value}
+                          onChangeText={onChange}
+                          placeholder={i18n.translate("firstName")}
+                          image={"person"}
+                        />
+                      )}
+                      rules={{
+                        required: requiredValidation(
+                          i18n.translate("firstName")
+                        ),
+                      }}
+                    />
+                  )}
+                  {registerType === "email" && (
+                    <Controller
+                      name={formKeys.lastName}
+                      control={control}
+                      render={({ field: { onChange, value } }) => (
+                        <InputFields
+                          errorMessage={errors[
+                            formKeys.lastName
+                          ]?.message.toString()}
+                          value={value}
+                          onChangeText={onChange}
+                          placeholder={i18n.translate("lastName")}
+                          image={"person"}
+                        />
+                      )}
+                      rules={{
+                        required: requiredValidation(
+                          i18n.translate("lastName")
+                        ),
+                      }}
+                    />
+                  )}
+                  {registerType === "email" && (
+                    <Controller
+                      name={formKeys.email}
+                      control={control}
+                      render={({ field: { onChange, value } }) => (
+                        <InputFields
+                          errorMessage={errors[
+                            formKeys.email
+                          ]?.message.toString()}
+                          value={value}
+                          onChangeText={onChange}
+                          placeholder={i18n.translate("email")}
+                          image={"email"}
+                        />
+                      )}
+                      rules={{
+                        required: requiredValidation(i18n.translate("email")),
+                        validate: emailValidation,
+                      }}
+                    />
+                  )}
+
+                  {registerType === "email" && (
+                    <Controller
+                      name={formKeys.password}
+                      control={control}
+                      render={({ field: { onChange, value } }) => (
+                        <InputFields
+                          isPassword={true}
+                          value={value}
+                          isSecure={true}
+                          onChangeText={onChange}
+                          placeholder={i18n.translate("createPassword")}
+                          errorMessage={errors[
+                            formKeys.password
+                          ]?.message.toString()}
+                          image={"lock-outline"}
+                        />
+                      )}
+                      rules={{
+                        required: requiredValidation(
+                          i18n.translate("createPassword")
+                        ),
+                        minLength: minLengthValidation(
+                          validationSchema.password.minLength
+                        ),
+                      }}
+                    />
+                  )}
+
+                  {registerType === "email" && (
+                    <Controller
+                      name={formKeys.confirmPassword}
+                      control={control}
+                      render={({ field: { onChange, value } }) => (
+                        <InputFields
+                          isPassword={true}
+                          value={value}
+                          isSecure={true}
+                          onChangeText={onChange}
+                          placeholder={i18n.translate("confirmPassword")}
+                          errorMessage={errors[
+                            formKeys.confirmPassword
+                          ]?.message.toString()}
+                          image={"lock-outline"}
+                        />
+                      )}
+                      rules={{
+                        required: requiredValidation(
+                          i18n.translate("confirmPassword")
+                        ),
+                        validate: (value) =>
+                          value === pwd || i18n.translate("passDontMatch"),
+                      }}
+                    />
+                  )}
+                </View>
+                <View style={styles.infoTextViewStyle}>
                   <View
                     style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      paddingTop: "15%",
+                      borderColor: "black",
+                      borderWidth: 1,
+                      width: "auto",
+                      height: "auto",
+                      marginRight: 3,
+                      borderRadius: 15,
                     }}
                   >
-                    <H6fontBoldWhite>
-                      {i18n.translate("signUp")}
-                    </H6fontBoldWhite>
-
-                    <Image
-                      source={require("../../assets/headerIcon.png")}
-                      style={{ width: 300, height: 100 }}
-                      resizeMode="contain" // Aceasta va asigura că întreaga imagine se va încadra în spațiul disponibil, păstrând proporțiile.
+                    <Checkbox
+                      status={isChecked ? "checked" : "unchecked"}
+                      onPress={() => {
+                        setChecked(!isChecked);
+                      }}
+                      color={"#6200ee"} // Optional: Customize the color
                     />
                   </View>
-
-                  <View>
-                    {registerType === "email" && (
-                      <Controller
-                        name={formKeys.firstName}
-                        control={control}
-                        render={({ field: { onChange, value } }) => (
-                          <InputFields
-                            errorMessage={errors[
-                              formKeys.firstName
-                            ]?.message.toString()}
-                            value={value}
-                            onChangeText={onChange}
-                            placeholder={i18n.translate("firstName")}
-                            image={"person"}
-                          />
-                        )}
-                        rules={{
-                          required: requiredValidation(
-                            i18n.translate("firstName")
-                          ),
-                        }}
-                      />
-                    )}
-                    {registerType === "email" && (
-                      <Controller
-                        name={formKeys.lastName}
-                        control={control}
-                        render={({ field: { onChange, value } }) => (
-                          <InputFields
-                            errorMessage={errors[
-                              formKeys.lastName
-                            ]?.message.toString()}
-                            value={value}
-                            onChangeText={onChange}
-                            placeholder={i18n.translate("lastName")}
-                            image={"person"}
-                          />
-                        )}
-                        rules={{
-                          required: requiredValidation(
-                            i18n.translate("lastName")
-                          ),
-                        }}
-                      />
-                    )}
-                    {registerType === "email" && (
-                      <Controller
-                        name={formKeys.email}
-                        control={control}
-                        render={({ field: { onChange, value } }) => (
-                          <InputFields
-                            errorMessage={errors[
-                              formKeys.email
-                            ]?.message.toString()}
-                            value={value}
-                            onChangeText={onChange}
-                            placeholder={i18n.translate("email")}
-                            image={"email"}
-                          />
-                        )}
-                        rules={{
-                          required: requiredValidation(i18n.translate("email")),
-                          validate: emailValidation,
-                        }}
-                      />
-                    )}
-
-                    {registerType === "email" && (
-                      <Controller
-                        name={formKeys.password}
-                        control={control}
-                        render={({ field: { onChange, value } }) => (
-                          <InputFields
-                            isPassword={true}
-                            value={value}
-                            isSecure={true}
-                            onChangeText={onChange}
-                            placeholder={i18n.translate("createPassword")}
-                            errorMessage={errors[
-                              formKeys.password
-                            ]?.message.toString()}
-                            image={"lock-outline"}
-                          />
-                        )}
-                        rules={{
-                          required: requiredValidation(
-                            i18n.translate("createPassword")
-                          ),
-                          minLength: minLengthValidation(
-                            validationSchema.password.minLength
-                          ),
-                        }}
-                      />
-                    )}
-
-                    {registerType === "email" && (
-                      <Controller
-                        name={formKeys.confirmPassword}
-                        control={control}
-                        render={({ field: { onChange, value } }) => (
-                          <InputFields
-                            isPassword={true}
-                            value={value}
-                            isSecure={true}
-                            onChangeText={onChange}
-                            placeholder={i18n.translate("confirmPassword")}
-                            errorMessage={errors[
-                              formKeys.confirmPassword
-                            ]?.message.toString()}
-                            image={"lock-outline"}
-                          />
-                        )}
-                        rules={{
-                          required: requiredValidation(
-                            i18n.translate("confirmPassword")
-                          ),
-                          validate: (value) =>
-                            value === pwd || i18n.translate("passDontMatch"),
-                        }}
-                      />
-                    )}
+                  <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+                    <Text>I agree to the </Text>
+                    <TouchableOpacity
+                      onPress={() =>
+                        navigation.navigate(
+                          screenName.termConditionsClinic as any
+                        )
+                      }
+                    >
+                      <Text style={{ textDecorationLine: "underline" }}>
+                        Terms of Service
+                      </Text>
+                    </TouchableOpacity>
+                    <Text> and </Text>
+                    <TouchableOpacity
+                      onPress={() =>
+                        navigation.navigate(
+                          screenName.termConditionsClinic as any
+                        )
+                      }
+                    >
+                      <Text style={{ textDecorationLine: "underline" }}>
+                        Privacy Policy
+                      </Text>
+                    </TouchableOpacity>
+                    <Text>.</Text>
                   </View>
-
+                </View>
+                {isChecked ? (
                   <Button
                     disabled={false}
                     funCallback={handleSubmit(onSubmit)}
@@ -321,36 +366,43 @@ const SignUpScreenClinic: React.FC<Props> = ({ navigation }): JSX.Element => {
                     borderColor={colors.white}
                     borderWidth={0.2}
                     txtColor={colors.white}
-                    style={{ width: 300 }}
                   />
+                ) : (
+                  <Button
+                    disabled={!isChecked ? true : false}
+                    funCallback={handleSubmit(onSubmit)}
+                    label={"Agree terms and policy to continue"}
+                    success={true}
+                    bgColor={"transparent"}
+                    borderColor={colors.white}
+                    borderWidth={0.2}
+                    txtColor={colors.black}
+                  />
+                )}
 
-                  <View>
-                    <View style={styles.infoTextViewStyle}>
-                      <H7fontMediumPrimary>
-                        {i18n.translate("alreadyAccount")}{" "}
-                      </H7fontMediumPrimary>
-                      <TouchableOpacity
-                        onPress={() =>
-                          navigation.navigate(
-                            screenName.SignInScreenClinic as any
-                          )
-                        }
+                <View>
+                  <View style={styles.infoTextViewStyle}>
+                    <H7fontMediumPrimary>
+                      {i18n.translate("alreadyAccount")}{" "}
+                    </H7fontMediumPrimary>
+                    <TouchableOpacity
+                      onPress={() =>
+                        navigation.navigate(
+                          screenName.SignInScreenClinic as any
+                        )
+                      }
+                    >
+                      <H7fontMediumPrimary
+                        style={{ textDecorationLine: "underline" }}
                       >
-                        <H7fontMediumPrimary
-                          style={{ textDecorationLine: "underline" }}
-                        >
-                          {i18n.translate("registerLogin")}
-                        </H7fontMediumPrimary>
-                      </TouchableOpacity>
-                    </View>
-                    {/* <View style={styles.borderLineStyle}>
-                  <CommonLineView />
-                </View> */}
+                        {i18n.translate("registerLogin")}
+                      </H7fontMediumPrimary>
+                    </TouchableOpacity>
                   </View>
                 </View>
-              </ScrollView>
+              </View>
             </KeyboardAvoidingView>
-            {showSnackback && (
+            {showSnackback ? (
               <SnackBar
                 showSnackBar={showSnackback}
                 setShowSnackback={setShowSnackback}
@@ -358,33 +410,30 @@ const SignUpScreenClinic: React.FC<Props> = ({ navigation }): JSX.Element => {
                 bottom={2}
                 screen={screenName.SignInScreenClinic}
               />
-            )}
+            ) : null}
           </LinearGradient>
         </MainContainer>
       </Fragment>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 export default SignUpScreenClinic;
 
 const styles = StyleSheet.create({
-  scrollViewContainer: {
-    flexGrow: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    // paddingTop: "5%",
-    paddingBottom: "5%",
-  },
   gradient: {
     flex: 1,
     width: "100%",
     height: "100%",
-
+    paddingBottom: "5%",
     // Alte stiluri necesare pentru a pozitiona gradientul după cum este necesar
   },
   subContainer: {
+    flex: 1,
     paddingHorizontal: 20,
-    paddingBottom: "10%",
+    // paddingVertical: 15,
+    justifyContent: "center",
+
+    height: "100%",
   },
   infoTextViewStyle: {
     paddingTop: 10,

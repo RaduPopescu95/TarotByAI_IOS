@@ -64,137 +64,149 @@ export const SettingsPage: React.FC<Props> = ({}): JSX.Element => {
     <SafeAreaView style={{ flex: 1 }}>
       <CustomLoader isLoading={isLoading} />
       <LinearGradient
-    colors={["#000000", "#434343"]} // Înlocuiește cu culorile gradientului tău
-    style={{flex:1}}
-  >
+        colors={["#000000", "#434343"]} // Înlocuiește cu culorile gradientului tău
+        style={{ flex: 1 }}
+      >
+        <ScrollView contentContainerStyle={styles.container}>
+          <View
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <H6fontBoldPrimary>{i18n.translate("settings")}</H6fontBoldPrimary>
 
-      <ScrollView contentContainerStyle={styles.container}>
-      <View style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-       <H6fontBoldPrimary>{i18n.translate("settings")}</H6fontBoldPrimary> 
-              
-  <Image
-    source={require('../../assets/headerIcon.png')}
-    style={{width: 300, height: 200}}
-    resizeMode="contain" // Aceasta va asigura că întreaga imagine se va încadra în spațiul disponibil, păstrând proporțiile.
-  />
-</View>
-      
+            <Image
+              source={require("../../assets/headerIcon.png")}
+              style={{ width: 300, height: 200 }}
+              resizeMode="contain" // Aceasta va asigura că întreaga imagine se va încadra în spațiul disponibil, păstrând proporțiile.
+            />
+          </View>
 
-        {true &&
-          clinicSettingsSections.map(({ header, items }) => (
-            <View style={styles.section} key={header}>
-              {/* <Text style={styles.sectionHeader}>{header}</Text> */}
-              {items.map(
-                ({ label, icon, type, value, color, screenName }, index) => {
-                  if (type === "signout") {
-                    return (
-                      <TouchableOpacity
-                        key={label}
-                        onPress={() => {
-                          // handle onPress
-                          if (type === "signout") {
-                            Alert.alert(
-                              i18n.translate("deleteAccount"),
-                              i18n.translate("sureUWantToDelete"),
-                              [
-                                {
-                                  text: i18n.translate("cancel"),
-                                  onPress: () => console.log("Cancel Pressed"),
-                                  style: "cancel",
-                                },
-                                {
-                                  text: "OK",
-                                  onPress: () => {
-                                    handleSignOut().then(() => {
-                                      navigation.navigate(screenName);
-                                    });
+          {true &&
+            clinicSettingsSections.map(({ header, items }) => (
+              <View style={styles.section} key={header}>
+                {/* <Text style={styles.sectionHeader}>{header}</Text> */}
+                {items.map(
+                  ({ label, icon, type, value, color, screenName }, index) => {
+                    if (type === "signout") {
+                      return (
+                        <TouchableOpacity
+                          key={label}
+                          onPress={() => {
+                            // handle onPress
+                            if (type === "signout") {
+                              Alert.alert(
+                                i18n.translate("deleteAccount"),
+                                i18n.translate("sureUWantToDelete"),
+                                [
+                                  {
+                                    text: i18n.translate("cancel"),
+                                    onPress: () =>
+                                      console.log("Cancel Pressed"),
+                                    style: "cancel",
                                   },
-                                },
-                              ]
-                            );
-                          }
-                        }}
-                      >
-                        <View style={styles.row}>
-                          <View
-                            style={[styles.rowIcon, { backgroundColor: color }]}
-                          >
-                            {/* <FeatherIcon color="#fff" name={icon} size={18} /> */}
-                            {icon === "document-text-outline" ? (
-                              <Ionicons name={icon} size={20} color="white" />
-                            ) : icon === "trash-outline" ? (
-                              <Ionicons name={icon} size={20} color="white" />
-                            ) : (
-                              <MaterialIcons
-                                name={icon}
-                                size={20}
-                                color="white"
-                              />
-                            )}
-                          </View>
-
-                          <Text style={styles.rowLabel}>{label}</Text>
-
-                          <View style={styles.rowSpacer} />
-
-                          {type === "boolean" && <Switch value={value} />}
-                        </View>
-                      </TouchableOpacity>
-                    );
-                  } else {
-                    return (
-                      <TouchableOpacity
-                        key={label}
-                        onPress={() => {
-                          // handle onPress
-                          if (screenName === "deleteAccount") {
-                            Alert.alert(
-                              i18n.translate("deleteAccount"),
-                              i18n.translate("sureUWantToDelete"),
-                              [
-                                {
-                                  text: i18n.translate("cancel"),
-                                  onPress: () => console.log("Cancel Pressed"),
-                                  style: "cancel",
-                                },
-                                {
-                                  text: "OK",
-                                  onPress: () => {
-                                    setModalVisible(true);
-                                    // deleteAccount(true, patientInformation.oldPatientImage, navigation)
+                                  {
+                                    text: "OK",
+                                    onPress: () => {
+                                      handleSignOut().then(() => {
+                                        navigation.navigate(screenName);
+                                      });
+                                    },
                                   },
-                                },
-                              ]
-                            );
-                          } else {
-                            navigation.navigate(screenName);
-                          }
-                        }}
-                      >
-                        <View style={styles.row}>
-                          <View
-                            style={[styles.rowIcon, { backgroundColor: color }]}
-                          >
-                            {/* <FeatherIcon color="#fff" name={icon} size={18} /> */}
-                            {icon === "document-text-outline" ? (
-                              <Ionicons name={icon} size={20} color="white" />
-                            ) : icon === "trash-outline" ? (
-                              <Ionicons name={icon} size={20} color="white" />
-                            ) : (
-                              <MaterialIcons
-                                name={icon}
-                                size={20}
-                                color="white"
-                              />
-                            )}
+                                ]
+                              );
+                            }
+                          }}
+                        >
+                          <View style={styles.row}>
+                            <View
+                              style={[
+                                styles.rowIcon,
+                                { backgroundColor: color },
+                              ]}
+                            >
+                              {/* <FeatherIcon color="#fff" name={icon} size={18} /> */}
+                              {icon === "document-text-outline" ? (
+                                <Ionicons name={icon} size={20} color="white" />
+                              ) : icon === "trash-outline" ? (
+                                <Ionicons name={icon} size={20} color="white" />
+                              ) : (
+                                <MaterialIcons
+                                  name={icon}
+                                  size={20}
+                                  color="white"
+                                />
+                              )}
+                            </View>
+
+                            <Text style={styles.rowLabel}>{label}</Text>
+
+                            <View style={styles.rowSpacer} />
+
+                            {type === "boolean" && <Switch value={value} />}
                           </View>
+                        </TouchableOpacity>
+                      );
+                    } else {
+                      return (
+                        <TouchableOpacity
+                          key={label}
+                          onPress={() => {
+                            // handle onPress
+                            if (screenName === "deleteAccount") {
+                              Alert.alert(
+                                i18n.translate("deleteAccount"),
+                                i18n.translate("sureUWantToDelete"),
+                                [
+                                  {
+                                    text: i18n.translate("cancel"),
+                                    onPress: () =>
+                                      console.log("Cancel Pressed"),
+                                    style: "cancel",
+                                  },
+                                  {
+                                    text: "OK",
+                                    onPress: () => {
+                                      setModalVisible(true);
+                                      // deleteAccount(true, patientInformation.oldPatientImage, navigation)
+                                    },
+                                  },
+                                ]
+                              );
+                            } else {
+                              navigation.navigate(screenName);
+                            }
+                          }}
+                        >
+                          <View style={styles.row}>
+                            <View
+                              style={[
+                                styles.rowIcon,
+                                { backgroundColor: color },
+                              ]}
+                            >
+                              {/* <FeatherIcon color="#fff" name={icon} size={18} /> */}
+                              {icon === "document-text-outline" ? (
+                                <Ionicons name={icon} size={20} color="white" />
+                              ) : icon === "trash-outline" ? (
+                                <Ionicons name={icon} size={20} color="white" />
+                              ) : (
+                                <MaterialIcons
+                                  name={icon}
+                                  size={20}
+                                  color="white"
+                                />
+                              )}
+                            </View>
 
-                          <Text style={styles.rowLabel}>{label}</Text>
+                            <Text style={styles.rowLabel}>{label}</Text>
 
-                          <View style={styles.rowSpacer} />
+                            <View style={styles.rowSpacer} />
 
-                          {type === "boolean" && <Switch value={value} />}
-                          {/* 
+                            {type === "boolean" && <Switch value={value} />}
+                            {/* 
                       {type === 'link' && (
                         <FeatherIcon
                           color="#0c0c0c"
@@ -202,61 +214,61 @@ export const SettingsPage: React.FC<Props> = ({}): JSX.Element => {
                           size={22}
                         />
                       )} */}
-                        </View>
-                      </TouchableOpacity>
-                    );
+                          </View>
+                        </TouchableOpacity>
+                      );
+                    }
                   }
-                }
-              )}
-            </View>
-          ))}
-      </ScrollView>
-      <CheckCurrentPasswordModal
-        setIsModalVisible={setModalVisible}
-        isModalVisible={modalVisible}
-        handleDeleteAccount={(currentPassword, email) => {
-          try {
-            if (params.isClinicSettings) {
-              setIsLoading(true);
-              console.log("Test here...");
+                )}
+              </View>
+            ))}
+        </ScrollView>
+        <CheckCurrentPasswordModal
+          setIsModalVisible={setModalVisible}
+          isModalVisible={modalVisible}
+          handleDeleteAccount={(currentPassword, email) => {
+            try {
+              if (params.isClinicSettings) {
+                setIsLoading(true);
+                console.log("Test here...");
 
-              deleteAccount(
-                false,
-                clinicInformation.oldClinicImages,
-                currentPassword,
-                email,
-                navigation,
-                doctorsImages
-              ).then(() => {
-                setIsLoading(false);
-                console.log("-----s---------");
-                // console.log(disableModal)
-                setModalVisible(false);
-              });
-            } else {
-              console.log(patientInformation.email);
-              setIsLoading(true);
+                deleteAccount(
+                  false,
+                  clinicInformation.oldClinicImages,
+                  currentPassword,
+                  email,
+                  navigation,
+                  doctorsImages
+                ).then(() => {
+                  setIsLoading(false);
+                  console.log("-----s---------");
+                  // console.log(disableModal)
+                  setModalVisible(false);
+                });
+              } else {
+                console.log(patientInformation.email);
+                setIsLoading(true);
 
-              deleteAccount(
-                true,
-                patientInformation.oldPatientImage,
-                currentPassword,
-                patientInformation.email,
-                navigation
-              ).then(() => {
-                setIsLoading(false);
-                setModalVisible(false);
-              });
+                deleteAccount(
+                  true,
+                  patientInformation.oldPatientImage,
+                  currentPassword,
+                  patientInformation.email,
+                  navigation
+                ).then(() => {
+                  setIsLoading(false);
+                  setModalVisible(false);
+                });
 
-              // if(disableModal){
-              //   setModalVisible(false)
-              // }
+                // if(disableModal){
+                //   setModalVisible(false)
+                // }
+              }
+            } catch (err) {
+              console.log("there was an error delleting an account...", err);
             }
-          } catch (err) {
-            console.log("there was an error delleting an account...", err);
-          }
-        }}
-      />
+          }}
+        />
       </LinearGradient>
     </SafeAreaView>
   );

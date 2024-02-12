@@ -189,6 +189,10 @@ const HomeNavigation = (props: NavigationProps) => {
           name={screenName.ClinicDashBoard}
           component={ClinicDashboard}
         />
+        <Stack.Screen
+          name={screenName.termConditionsClinic}
+          component={TermsConditionsClinic}
+        />
 
         <Stack.Screen name="Dashboard2" component={Dashboard2} />
         <Stack.Screen

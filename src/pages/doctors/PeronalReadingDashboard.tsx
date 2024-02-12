@@ -16,6 +16,7 @@ import CustomSpinner from "../../components/CustomSpinner/CustomSpinner";
 import { colors } from "../../utils/colors";
 import { useApiData } from "../../context/ApiContext";
 import { MainContainer } from "../../components/commonViews";
+import * as Analytics from "expo-firebase-analytics";
 import i18n, { languageCode } from "../../../i18n";
 import CardLayoutViitor from "../../components/CardLayout/CardLayoutViitor";
 import {
@@ -70,14 +71,14 @@ const PersonalReadingDashboard = ({ route }) => {
   const { currentNumber, updateNumber } = useNumberContext();
 
   useEffect(() => {
-    console.log(categoriiPersonalizate[0].info.ro);
-    console.log(categoriiPersonalizate[1].info.ro);
-    console.log(categoriiPersonalizate[2].info.ro);
-    console.log(categoriiPersonalizate[3].info.ro);
-    console.log(categoriiPersonalizate[4].info.ro);
-    console.log(categoriiPersonalizate[5].info.ro);
-    console.log(categoriiPersonalizate[6].info.ro);
-    console.log(categoriiPersonalizate[7].info.ro);
+    const logScreenView = async () => {
+      await Analytics.logEvent("screen_view", {
+        screen_name: "Personal Reading Dashboard",
+      });
+    };
+
+    logScreenView().catch((error) => console.error(error));
+
     if (isFirstEntry.current) {
       setLoading(true);
       shuffleCartiPersonalizate();

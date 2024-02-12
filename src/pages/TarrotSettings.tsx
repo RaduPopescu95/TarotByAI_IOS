@@ -7,6 +7,7 @@ import {
   Alert,
   ImageBackground,
   KeyboardAvoidingView,
+  Text,
 } from "react-native";
 import { Button, SocialMediaLogin } from "../components/commonButton";
 import { GeneralProps } from "../interfaces/generalProps";
@@ -195,6 +196,9 @@ const TarrotSettings: React.FC<Props> = ({ navigation }): JSX.Element => {
     }
 
     if (firstNameValue) {
+      // const newData = {
+      //   first_name: firstNameValue,
+      // };
       copyUserData.first_name = firstNameValue;
 
       const userLocation = `Users/${
@@ -211,8 +215,12 @@ const TarrotSettings: React.FC<Props> = ({ navigation }): JSX.Element => {
           console.error("Error updating document: ", error);
         });
     }
-
     if (lastNameValue) {
+      // const newData = {
+      //   ...userData,
+      //   last_name: lastNameValue,
+      // };
+
       copyUserData.last_name = lastNameValue;
 
       const userLocation = `Users/${
@@ -280,12 +288,7 @@ const TarrotSettings: React.FC<Props> = ({ navigation }): JSX.Element => {
                           />
                           <Image
                             source={require("../../assets/headerIcon.png")}
-                            style={{
-                              width: 300,
-                              height: 100,
-                              bottom: "20%",
-                              marginTop: "5%",
-                            }}
+                            style={{ width: 300, height: 150, bottom: "20%" }}
                             resizeMode="contain" // Aceasta va asigura că întreaga imagine se va încadra în spațiul disponibil, păstrând proporțiile.
                           />
                         </View>
@@ -296,7 +299,6 @@ const TarrotSettings: React.FC<Props> = ({ navigation }): JSX.Element => {
                             display: "flex",
                             alignItems: "center",
                             width: "100%",
-                            marginTop: "5%",
                           }}
                         >
                           <H6fontBoldPrimary style={{ textAlign: "center" }}>
@@ -328,6 +330,15 @@ const TarrotSettings: React.FC<Props> = ({ navigation }): JSX.Element => {
                             style={{ marginTop: "10%", width: "70%" }}
                             txtColor={colors.white}
                           />
+                          <TouchableOpacity
+                            onPress={() =>
+                              navigation.navigate(
+                                screenName.termConditionsClinic as any
+                              )
+                            }
+                          >
+                            <Text>Privacy Policy & Terms</Text>
+                          </TouchableOpacity>
                         </View>
                       </View>
                     </>
@@ -533,6 +544,16 @@ const TarrotSettings: React.FC<Props> = ({ navigation }): JSX.Element => {
                           borderWidth={0.2}
                           txtColor={colors.white}
                         />
+
+                        <TouchableOpacity
+                          onPress={() =>
+                            navigation.navigate(
+                              screenName.termConditionsClinic as any
+                            )
+                          }
+                        >
+                          <Text>Privacy Policy & Terms</Text>
+                        </TouchableOpacity>
 
                         <View>
                           <View style={styles.infoTextViewStyle}>
