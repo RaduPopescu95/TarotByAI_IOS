@@ -13,6 +13,7 @@ import { useNavigationState } from "../context/NavigationContext";
 import i18n from "../../i18n";
 import { useApiData } from "../context/ApiContext";
 import { useNumberContext } from "../context/NumberContext";
+import { FontAwesome } from "@expo/vector-icons";
 
 const NavBarBottom = () => {
   const navigation = useNavigation();
@@ -47,7 +48,7 @@ const NavBarBottom = () => {
   } = useApiData();
 
   const animatedValues = useRef(
-    Array.from({ length: 3 }, () => new Animated.Value(0))
+    Array.from({ length: 4 }, () => new Animated.Value(0))
   ).current;
   const chevronAnimation = useRef(new Animated.Value(0)).current;
 
@@ -182,7 +183,9 @@ const NavBarBottom = () => {
           styles.navbar,
           {
             backgroundColor:
-              selected === 1 ? "rgba(252, 246, 198, 0.8)" : "transparent",
+              selected === 1 || selected === 3
+                ? "rgba(252, 246, 198, 0.8)"
+                : "transparent",
           },
         ]}
       >
@@ -190,6 +193,7 @@ const NavBarBottom = () => {
           screenName.ClinicDashBoard,
           screenName.PersonalReadingDashboard,
           "TarrotSettings",
+          "News", // Ensure "News" is included in your navigation options array
         ].map((screen, index) => (
           <Animated.View
             key={screen}
@@ -203,15 +207,26 @@ const NavBarBottom = () => {
               onPress={() => handlePress(screen, index)}
               style={{ zIndex: 1 }}
             >
-              {index === 1 ? (
+              {screen === "News" ? (
+                // Condition to check if the current screen is "News" and render the newspaper-outline icon
+                <Ionicons
+                  name="newspaper-outline"
+                  size={selected === index ? 34 : 24}
+                  color={
+                    selected === index ? colors.gradientLogin2 : colors.primary3
+                  }
+                />
+              ) : screen === screenName.PersonalReadingDashboard ? (
+                // Condition to check if the current screen is "News" and render the newspaper-outline icon
                 <MaterialCommunityIcons
-                  name={"cards-outline"}
+                  name="cards-outline"
                   size={selected === index ? 34 : 24}
                   color={
                     selected === index ? colors.gradientLogin2 : colors.primary3
                   }
                 />
               ) : (
+                // Existing code to render icons for other navigation options
                 <Ionicons
                   name={
                     "ios-" +

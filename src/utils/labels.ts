@@ -1,5 +1,10 @@
 export const langObj = {
   en: {
+    All: "All",
+    "Previziuni zilnice": "Daily Forecasts",
+    "Previziuni săptămânale": "Weekly Forecasts",
+    "Previziuni lunare": "Monthly Forecasts",
+    "Previziuni anuale": "Annual Forecasts",
     createAccountCTA: "Explore more with your own account",
     createAccountCTAMessage:
       "Create an account to save and view your tarot reading history",
@@ -78,6 +83,11 @@ export const langObj = {
     clinicLoginRedirect: "Continue",
   },
   ro: {
+    All: "Toate",
+    "Previziuni zilnice": "Previziuni zilnice",
+    "Previziuni săptămânale": "Previziuni săptămânale",
+    "Previziuni lunare": "Previziuni lunare",
+    "Previziuni anuale": "Previziuni anuale",
     createAccountCTA: "Explorează mai multe cu propriul tău cont",
     createAccountCTAMessage:
       "Creează-ți un cont pentru a salva și vizualiza istoricul citirilor tale de tarot",
@@ -162,6 +172,11 @@ export const langObj = {
     clinicLoginRedirect: "Continuă",
   },
   es: {
+    All: "Todo",
+    "Previziuni zilnice": "Pronósticos diarios",
+    "Previziuni săptămânale": "Pronósticos semanales",
+    "Previziuni lunare": "Pronósticos mensuales",
+    "Previziuni anuale": "Pronósticos anuales",
     createAccountCTA: "Explora más con tu propia cuenta",
     createAccountCTAMessage:
       "Crea una cuenta para guardar y ver tu historial de lecturas de tarot",
@@ -246,6 +261,11 @@ export const langObj = {
     clinicLoginRedirect: "Continuar",
   },
   it: {
+    All: "Tutto",
+    "Previziuni zilnice": "Previsioni giornaliere",
+    "Previziuni săptămânale": "Previsioni settimanali",
+    "Previziuni lunare": "Previsioni mensili",
+    "Previziuni anuale": "Previsioni annuali",
     createAccountCTA: "Esplora di più con il tuo account",
     createAccountCTAMessage:
       "Crea un account per salvare e visualizzare la tua cronologia di letture dei tarocchi",
@@ -327,6 +347,11 @@ export const langObj = {
     clinicLoginRedirect: "Continua",
   },
   pl: {
+    All: "Wszystko",
+    "Previziuni zilnice": "Prognozy dzienne",
+    "Previziuni săptămânale": "Prognozy tygodniowe",
+    "Previziuni lunare": "Prognozy miesięczne",
+    "Previziuni anuale": "Prognozy roczne",
     createAccountCTA: "Odkrywaj więcej z własnym kontem",
     createAccountCTAMessage:
       "Utwórz konto, aby zapisać i przeglądać historię twoich czytań tarota",
@@ -408,6 +433,11 @@ export const langObj = {
     clinicLoginRedirect: "Kontynuuj",
   },
   bg: {
+    All: "Всичко",
+    "Previziuni zilnice": "Ежедневни прогнози",
+    "Previziuni săptămânale": "Седмични прогнози",
+    "Previziuni lunare": "Месечни прогнози",
+    "Previziuni anuale": "Годишни прогнози",
     createAccountCTA: "Разгледайте повече със собствената си сметка",
     createAccountCTAMessage:
       "Създайте акаунт, за да запазите и прегледате историята на вашите таро четения",
@@ -487,6 +517,11 @@ export const langObj = {
     clinicLoginRedirect: "Продължете",
   },
   cs: {
+    All: "Vše",
+    "Previziuni zilnice": "Denní předpovědi",
+    "Previziuni săptămânale": "Týdenní předpovědi",
+    "Previziuni lunare": "Měsíční předpovědi",
+    "Previziuni anuale": "Roční předpovědi",
     createAccountCTA: "Prozkoumejte více se svým vlastním účtem",
     createAccountCTAMessage:
       "Vytvořte si účet pro ukládání a prohlížení historie vašich věštění z tarotu",
@@ -567,6 +602,11 @@ export const langObj = {
     clinicLoginRedirect: "Pokračovat",
   },
   de: {
+    All: "Alle",
+    "Previziuni zilnice": "Tägliche Vorhersagen",
+    "Previziuni săptămânale": "Wöchentliche Vorhersagen",
+    "Previziuni lunare": "Monatliche Vorhersagen",
+    "Previziuni anuale": "Jährliche Vorhersagen",
     createAccountCTA: "Entdecke mehr mit deinem eigenen Konto",
     createAccountCTAMessage:
       "Erstelle ein Konto, um deine Tarot-Lesungshistorie zu speichern und anzusehen",
@@ -649,6 +689,11 @@ export const langObj = {
     clinicLoginRedirect: "Fortfahren",
   },
   el: {
+    All: "Όλα",
+    "Previziuni zilnice": "Ημερήσιες προβλέψεις",
+    "Previziuni săptămânale": "Εβδομαδιαίες προβλέψεις",
+    "Previziuni lunare": "Μηνιαίες προβλέψεις",
+    "Previziuni anuale": "Ετήσιες προβλέψεις",
     createAccountCTA: "Εξερεύνησε περισσότερα με το δικό σου λογαριασμό",
     createAccountCTAMessage:
       "Δημιούργησε ένα λογαριασμό για να αποθηκεύσεις και να δεις το ιστορικό των αναγνώσεων ταρώ σου",
@@ -731,6 +776,11 @@ export const langObj = {
     clinicLoginRedirect: "Συνέχεια",
   },
   fr: {
+    All: "Tout",
+    "Previziuni zilnice": "Prévisions quotidiennes",
+    "Previziuni săptămânale": "Prévisions hebdomadaires",
+    "Previziuni lunare": "Prévisions mensuelles",
+    "Previziuni anuale": "Prévisions annuelles",
     createAccountCTA: "Explorez plus avec votre propre compte",
     createAccountCTAMessage:
       "Créez un compte pour sauvegarder et visualiser votre historique de lectures de tarot",
@@ -812,6 +862,11 @@ export const langObj = {
     clinicLoginRedirect: "Continuer",
   },
   hr: {
+    All: "Sve",
+    "Previziuni zilnice": "Dnevne prognoze",
+    "Previziuni săptămânale": "Tjedne prognoze",
+    "Previziuni lunare": "Mjesečne prognoze",
+    "Previziuni anuale": "Godišnje prognoze",
     createAccountCTA: "Istraži više sa svojim vlastitim računom",
     createAccountCTAMessage:
       "Kreiraj račun kako bi spremio i pregledao povijest svojih tarot čitanja",
@@ -890,6 +945,11 @@ export const langObj = {
     clinicLoginRedirect: "Nastavi",
   },
   hi: {
+    All: "सभी",
+    "Previziuni zilnice": "दैनिक भविष्यवाणियाँ",
+    "Previziuni săptămânale": "साप्ताहिक भविष्यवाणियाँ",
+    "Previziuni lunare": "मासिक भविष्यवाणियाँ",
+    "Previziuni anuale": "वार्षिक भविष्यवाणियाँ",
     createAccountCTA: "अपने खाते के साथ और अधिक तलाश करें",
     createAccountCTAMessage:
       "अपनी टैरो रीडिंग के इतिहास को सहेजने और देखने के लिए एक खाता बनाएं",
@@ -969,6 +1029,11 @@ export const langObj = {
     clinicLoginRedirect: "जारी रखें",
   },
   id: {
+    All: "Semua",
+    "Previziuni zilnice": "Prakiraan harian",
+    "Previziuni săptămânale": "Prakiraan mingguan",
+    "Previziuni lunare": "Prakiraan bulanan",
+    "Previziuni anuale": "Prakiraan tahunan",
     createAccountCTA: "Jelajahi lebih banyak dengan akunmu sendiri",
     createAccountCTAMessage:
       "Buat akun untuk menyimpan dan melihat riwayat bacaan tarot Anda",
@@ -1049,6 +1114,11 @@ export const langObj = {
     clinicLoginRedirect: "Lanjutkan",
   },
   sk: {
+    All: "Všetko",
+    "Previziuni zilnice": "Denné predpovede",
+    "Previziuni săptămânale": "Týždenné predpovede",
+    "Previziuni lunare": "Mesačné predpovede",
+    "Previziuni anuale": "Ročné predpovede",
     createAccountCTA: "Preskúmaj viac so svojím vlastným účtom",
     createAccountCTAMessage:
       "Vytvorte si účet na uloženie a zobrazenie histórie vašich čítaní tarotu",

@@ -76,6 +76,8 @@ import Bugsnag from "@bugsnag/expo";
 
 import GuestPhoneInputModal from "./src/components/GuestPhoneInputModal";
 import Dashboard2 from "./src/pages/doctors/Dashboard2";
+import News from "./src/pages/blog/News";
+import SavedNews from "./src/pages/blog/SavedNews";
 
 import NavBarBottom from "./src/components/Navbar";
 import { StyleSheet, View } from "react-native";
@@ -155,6 +157,8 @@ const HomeNavigation = (props: NavigationProps) => {
           name={screenName.SignInScreenClinic}
           component={SignInScreenClinic}
         />
+                <Stack.Screen name={"News"} component={News} />
+        <Stack.Screen name={"SavedNews"} component={SavedNews} />
         <Stack.Screen
           name={screenName.SignUpScreenClinic}
           component={SignUpScreenClinic}
