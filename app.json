@@ -3,7 +3,7 @@
     "name": "Cristina Zurba",
     "slug": "TarotByAi",
     "platforms": ["ios", "android", "web"],
-    "version": "1.2.0",
+    "version": "1.2.1",
     "orientation": "portrait",
     "plugins": [
       [
@@ -25,6 +25,7 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png"
       },
+      "googleServicesFile": "./google-services.json",
       "config": {},
       "softwareKeyboardLayoutMode": "pan",
       "package": "com.cristina.zurba.tarot",
@@ -47,7 +48,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.cristina.zurba.tarotai",
-      "buildNumber": "12",
+      "buildNumber": "13",
       "infoPlist": {
         "NSUserTrackingUsageDescription": "This identifier will be used to deliver personalized ads to you."
       },
@@ -61,6 +62,7 @@
     }
   },
   "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-9577714849380446~4870228858",
     "ios_app_id": "ca-app-pub-9577714849380446~1181241188",
     "user_tracking_usage_description": "This identifier will be used to deliver personalized ads to you.",
     "sk_ad_network_items": [

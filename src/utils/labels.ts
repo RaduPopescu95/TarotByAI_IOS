@@ -1,5 +1,8 @@
 export const langObj = {
   en: {
+    "feedbackPrompt": "Tell us what we can improve",
+    "descriereRate": "Your feedback helps us grow together!",
+    "rateApp": "Rate Cristina Zurba's App",
     All: "All",
     "Previziuni zilnice": "Daily Forecasts",
     "Previziuni săptămânale": "Weekly Forecasts",
@@ -83,6 +86,9 @@ export const langObj = {
     clinicLoginRedirect: "Continue",
   },
   ro: {
+    "feedbackPrompt": "Spuneți-ne ce putem îmbunătăți",
+    "descriereRate": "Feedback-ul tău ne ajută să creștem împreună!",
+    "rateApp": "Evaluează aplicația Cristina Zurba",
     All: "Toate",
     "Previziuni zilnice": "Previziuni zilnice",
     "Previziuni săptămânale": "Previziuni săptămânale",
@@ -172,6 +178,9 @@ export const langObj = {
     clinicLoginRedirect: "Continuă",
   },
   es: {
+    "feedbackPrompt": "Dinos qué podemos mejorar",
+    "descriereRate": "¡Tu opinión nos ayuda a crecer juntos!",
+    "rateApp": "Califica la aplicación de Cristina Zurba",
     All: "Todo",
     "Previziuni zilnice": "Pronósticos diarios",
     "Previziuni săptămânale": "Pronósticos semanales",
@@ -261,6 +270,9 @@ export const langObj = {
     clinicLoginRedirect: "Continuar",
   },
   it: {
+    "feedbackPrompt": "Dicci cosa possiamo migliorare",
+    "descriereRate": "Il tuo feedback ci aiuta a crescere insieme!",
+    "rateApp": "Valuta l'app di Cristina Zurba",
     All: "Tutto",
     "Previziuni zilnice": "Previsioni giornaliere",
     "Previziuni săptămânale": "Previsioni settimanali",
@@ -347,6 +359,9 @@ export const langObj = {
     clinicLoginRedirect: "Continua",
   },
   pl: {
+    "feedbackPrompt": "Powiedz nam, co możemy poprawić",
+    "descriereRate": "Twoja opinia pomaga nam razem rosnąć!",
+    "rateApp": "Oceń aplikację Cristina Zurba",
     All: "Wszystko",
     "Previziuni zilnice": "Prognozy dzienne",
     "Previziuni săptămânale": "Prognozy tygodniowe",
@@ -433,6 +448,9 @@ export const langObj = {
     clinicLoginRedirect: "Kontynuuj",
   },
   bg: {
+    "feedbackPrompt": "Кажете ни какво можем да подобрим",
+    "descriereRate": "Вашите отзиви ни помагат да растем заедно!",
+    "rateApp": "Оценете приложението на Кристина Зурба",
     All: "Всичко",
     "Previziuni zilnice": "Ежедневни прогнози",
     "Previziuni săptămânale": "Седмични прогнози",
@@ -517,6 +535,9 @@ export const langObj = {
     clinicLoginRedirect: "Продължете",
   },
   cs: {
+    "feedbackPrompt": "Řekněte nám, co můžeme zlepšit",
+    "descriereRate": "Váš zpětná vazba nám pomáhá růst společně!",
+    "rateApp": "Ohodnoťte aplikaci Cristina Zurba",
     All: "Vše",
     "Previziuni zilnice": "Denní předpovědi",
     "Previziuni săptămânale": "Týdenní předpovědi",
@@ -602,6 +623,9 @@ export const langObj = {
     clinicLoginRedirect: "Pokračovat",
   },
   de: {
+    "feedbackPrompt": "Sagen Sie uns, was wir verbessern können",
+    "descriereRate": "Ihr Feedback hilft uns, gemeinsam zu wachsen!",
+    "rateApp": "Bewerten Sie Cristina Zurba's App",
     All: "Alle",
     "Previziuni zilnice": "Tägliche Vorhersagen",
     "Previziuni săptămânale": "Wöchentliche Vorhersagen",
@@ -689,6 +713,9 @@ export const langObj = {
     clinicLoginRedirect: "Fortfahren",
   },
   el: {
+    "feedbackPrompt": "Πείτε μας τι μπορούμε να βελτιώσουμε",
+    "descriereRate": "Η ανατροφοδότησή σας μας βοηθά να μεγαλώσουμε μαζί!",
+    "rateApp": "Αξιολογήστε την εφαρμογή της Cristina Zurba",
     All: "Όλα",
     "Previziuni zilnice": "Ημερήσιες προβλέψεις",
     "Previziuni săptămânale": "Εβδομαδιαίες προβλέψεις",
@@ -776,6 +803,9 @@ export const langObj = {
     clinicLoginRedirect: "Συνέχεια",
   },
   fr: {
+    "feedbackPrompt": "Dites-nous ce que nous pouvons améliorer",
+    "descriereRate": "Vos retours nous aident à grandir ensemble!",
+    "rateApp": "Évaluez l'application de Cristina Zurba",
     All: "Tout",
     "Previziuni zilnice": "Prévisions quotidiennes",
     "Previziuni săptămânale": "Prévisions hebdomadaires",
@@ -862,6 +892,9 @@ export const langObj = {
     clinicLoginRedirect: "Continuer",
   },
   hr: {
+    "feedbackPrompt": "Recite nam što možemo poboljšati",
+    descriereRate: "Vaše povratne informacije pomažu nam rasti zajedno!",
+    rateApp: "Ocijenite aplikaciju Cristina Zurba",
     All: "Sve",
     "Previziuni zilnice": "Dnevne prognoze",
     "Previziuni săptămânale": "Tjedne prognoze",
@@ -945,6 +978,9 @@ export const langObj = {
     clinicLoginRedirect: "Nastavi",
   },
   hi: {
+    "feedbackPrompt": "हमें बताएं कि हम क्या सुधार सकते हैं",
+    descriereRate: "आपकी प्रतिक्रिया हमें साथ में बढ़ने में मदद करती है!",
+    rateApp: "क्रिस्टीना ज़ुर्बा के ऐप को रेट करें",
     All: "सभी",
     "Previziuni zilnice": "दैनिक भविष्यवाणियाँ",
     "Previziuni săptămânale": "साप्ताहिक भविष्यवाणियाँ",
@@ -1029,6 +1065,9 @@ export const langObj = {
     clinicLoginRedirect: "जारी रखें",
   },
   id: {
+    "feedbackPrompt": "Beritahu kami apa yang bisa kami tingkatkan",
+    descriereRate: "Umpan balik Anda membantu kami tumbuh bersama!",
+    rateApp: "Beri Nilai Aplikasi Cristina Zurba",
     All: "Semua",
     "Previziuni zilnice": "Prakiraan harian",
     "Previziuni săptămânale": "Prakiraan mingguan",
@@ -1114,6 +1153,9 @@ export const langObj = {
     clinicLoginRedirect: "Lanjutkan",
   },
   sk: {
+    "feedbackPrompt": "Povedzte nám, čo môžeme zlepšiť",
+    descriereRate: "Váš feedback nám pomáha rásť spoločne!",
+    rateApp: "Ohodnoťte aplikáciu Cristina Zurba",
     All: "Všetko",
     "Previziuni zilnice": "Denné predpovede",
     "Previziuni săptămânale": "Týždenné predpovede",

@@ -28,8 +28,8 @@ import { useLanguage } from "../../context/LanguageContext";
 import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { filterArticlesBeforeCurrentTime } from "../../utils/commonUtils";
-import { InterstitialAd, AdEventType, TestIds } from 'react-native-google-mobile-ads';
 import { MainContainer } from "../../components/commonViews";
+import { InterstitialAd, AdEventType, TestIds } from 'react-native-google-mobile-ads';
 
 // Înlocuiți cu ID-ul real al unității de anunțuri pentru producție
 const adUnitId = __DEV__ ? TestIds.INTERSTITIAL : 'ca-app-pub-9577714849380446/7080054250';

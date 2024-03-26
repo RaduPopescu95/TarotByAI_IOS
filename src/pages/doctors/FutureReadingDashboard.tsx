@@ -26,7 +26,7 @@ import {
   H8fontMediumWhite,
 } from "../../components/commonText";
 import { useLanguage } from "../../context/LanguageContext";
-import * as Analytics from "expo-firebase-analytics";
+// import * as Analytics from "expo-firebase-analytics";
 
 const FutureReadingDashboard = () => {
   const [cardAnimations, setCardAnimations] = useState([]);
@@ -66,21 +66,21 @@ const FutureReadingDashboard = () => {
   const isFirstEntry = useRef(true);
 
   useEffect(() => {
-    const logScreenView = async () => {
-      await Analytics.logEvent("screen_view", {
-        screen_name: "Future Dashboard",
-      });
-    };
+    // const logScreenView = async () => {
+    //   await Analytics.logEvent("screen_view", {
+    //     screen_name: "Future Dashboard",
+    //   });
+    // };
 
-    logScreenView().catch((error) => console.error(error));
-    if (isFirstEntry.current) {
-      setLoading(true);
-      shuffleCartiViitor();
-      console.log("Executat doar la prima intrare în acest ecran");
+    // logScreenView().catch((error) => console.error(error));
+    // if (isFirstEntry.current) {
+    //   setLoading(true);
+    //   shuffleCartiViitor();
+    //   console.log("Executat doar la prima intrare în acest ecran");
 
-      // Setează flag-ul pe false, astfel încât logica să nu se mai execute la următoarele intrări
-      isFirstEntry.current = false;
-    }
+    //   // Setează flag-ul pe false, astfel încât logica să nu se mai execute la următoarele intrări
+    //   isFirstEntry.current = false;
+    // }
   }, []); // Array gol de dependențe pentru a rula doar la montare
 
   // Initialize card animations and animate cards on mount and categoriiViitor change

@@ -33,7 +33,7 @@ import store from "./Store";
 import * as Font from "expo-font";
 import { NumberProvider } from "./src/context/NumberContext";
 import { requestTrackingPermissionsAsync } from "expo-tracking-transparency";
-import * as Analytics from "expo-firebase-analytics";
+// import * as Analytics from "expo-firebase-analytics";
 
 import mobileAds from "react-native-google-mobile-ads";
 
@@ -119,13 +119,13 @@ const App = () => {
   useEffect(() => {
     // Asigură-te că evenimentul este logat numai după ce atât fonturile, cât și limba au fost încărcate
     if (languageLoaded && fontsLoaded) {
-      const logScreenView = async () => {
-        await Analytics.logEvent("screen_view", {
-          screen_name: "App enter",
-        });
-      };
+      // const logScreenView = async () => {
+      //   await Analytics.logEvent("screen_view", {
+      //     screen_name: "App enter",
+      //   });
+      // };
 
-      logScreenView().catch((error) => console.error(error));
+      // logScreenView().catch((error) => console.error(error));
     }
   }, [languageLoaded, fontsLoaded]); // Dependențele efectului
 

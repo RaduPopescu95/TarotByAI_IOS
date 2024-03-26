@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import {
   View,
   ScrollView,
@@ -13,7 +13,7 @@ import {
 } from "react-native";
 import { Provider as PaperProvider } from "react-native-paper";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useFocusEffect, useNavigation, useRoute } from "@react-navigation/native";
 
 import NavBarBottom from "../../components/Navbar";
 import FlipCard from "../../components/FlipCard/FlipCard";
@@ -33,7 +33,12 @@ import {
   TestIds,
   AdEventType,
 } from "react-native-google-mobile-ads";
-import * as Analytics from "expo-firebase-analytics";
+import { usePushNotifications } from "../../hooks/usePushNotifications";
+import { handleQueryToken, handleUploadFirestore } from "../../utils/firestoreUtils";
+import { useAuth } from "../../context/AuthContext";
+import RattingDialog from "../../components/RattingDialog/RattingDialog";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+// import * as Analytics from "expo-firebase-analytics";
 
 const adUnitId = __DEV__
   ? TestIds.INTERSTITIAL
@@ -53,6 +58,33 @@ const ClinicDashboard = () => {
   const { language, changeLanguage } = useLanguage();
   const { currentScreen } = useNavigationState();
   const navigation = useNavigation();
+  const {expoPushToken} = usePushNotifications()
+  const { userData, currentUser, isGuestUser } = useAuth();
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const handleUploadToken = async () => {
+      if (expoPushToken) {
+        console.log("Expo Push Token.........: ", expoPushToken.data);
+
+          const timestamp = Date.now().toString(36);
+          const randomPart = Math.random().toString(36).substring(2, 8);
+          let uniqueId = timestamp + randomPart;
+          let tokenExists = await handleQueryToken("userTokens", expoPushToken.data);
+          // Logica pentru utilizatori autentificați
+          if (!tokenExists) {
+  
+            await handleUploadFirestore({ token: expoPushToken.data, language, isIos:true }, `userTokens/${uniqueId}`);
+          }
+  
+      }
+    };
+if(expoPushToken){
+
+  handleUploadToken(); // Apelarea funcției
+}
+  }, [expoPushToken, isGuestUser, userData]);
+
 
   const {
     oreNorocoase,
@@ -115,6 +147,28 @@ const ClinicDashboard = () => {
   //   }
   // }, []);
 
+  useFocusEffect(
+    useCallback(() => {
+      const manageVisibility = async () => {
+        const userRating = await AsyncStorage.getItem('userRating');
+        console.log("useRating...", userRating)
+        const entryCount = parseInt(await AsyncStorage.getItem('entryCount') || '0', 10);
+        await AsyncStorage.setItem('entryCount', (entryCount + 1).toString());
+    
+        // if ((entryCount + 1) % 5 === 0 && userRating === null) {
+        if ((entryCount + 1) % 5 === 0 ) {
+          console.log("true....")
+          setVisible(true);
+        } else {
+          console.log("false....")
+          setVisible(false);
+        }
+      };
+    
+      manageVisibility();
+    }, [])
+  );
+
   useEffect(() => {}, [language]);
 
   const animateCard = (index) => {
@@ -145,13 +199,13 @@ const ClinicDashboard = () => {
   const screenHeight = Dimensions.get("window").height;
 
   useEffect(() => {
-    const logScreenView = async () => {
-      await Analytics.logEvent("screen_view", {
-        screen_name: "Main Dashboard",
-      });
-    };
+    // const logScreenView = async () => {
+    //   await Analytics.logEvent("screen_view", {
+    //     screen_name: "Main Dashboard",
+    //   });
+    // };
 
-    logScreenView().catch((error) => console.error(error));
+    // logScreenView().catch((error) => console.error(error));
 
     const loadListener = interstitial.addAdEventListener(
       AdEventType.LOADED,
@@ -229,6 +283,11 @@ const ClinicDashboard = () => {
               </View>
             </View>
           </ImageBackground>
+          {
+        visible
+        &&
+      <RattingDialog setVisible={setVisible} visible={visible}/>
+      }
         </LinearGradient>
       </MainContainer>
     </Fragment>

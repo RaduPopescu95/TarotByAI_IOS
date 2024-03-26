@@ -84,6 +84,7 @@ import {
   userLocation,
 } from "../utils/firestoreUtils";
 import { useAuth } from "../context/AuthContext";
+import { usePushNotifications } from "../hooks/usePushNotifications";
 
 interface Props extends GeneralProps {
   route: Route<string, object | undefined>;
@@ -123,6 +124,7 @@ const TarrotSettings: React.FC<Props> = ({ navigation }): JSX.Element => {
   const [modalVisibleDelete, setModalVisibleDelete] = useState(false);
   const [showSnackBar, setShowSnackback] = useState(false);
   const [snackMessage, setSnackMessage] = useState("");
+  const {isGranted, openNotificationSettings} = usePushNotifications()
 
   let pwd = watch("password");
   const auth = authentication;
@@ -301,15 +303,15 @@ const TarrotSettings: React.FC<Props> = ({ navigation }): JSX.Element => {
                             width: "100%",
                           }}
                         >
-                          <H6fontBoldPrimary style={{ textAlign: "center" }}>
+                          <H6fontBoldPrimary style={{ textAlign: "center", marginTop:"3%" }}>
                             {i18n.translate("createAccountCTA")}
                           </H6fontBoldPrimary>
 
-                          <H7fontMediumPrimary
+                          {/* <H7fontMediumPrimary
                             style={{ textAlign: "center", marginTop: "10%" }}
                           >
                             {i18n.translate("createAccountCTAMessage")}
-                          </H7fontMediumPrimary>
+                          </H7fontMediumPrimary> */}
                           <Button
                             disabled={false}
                             funCallback={() => {
@@ -330,6 +332,42 @@ const TarrotSettings: React.FC<Props> = ({ navigation }): JSX.Element => {
                             style={{ marginTop: "10%", width: "70%" }}
                             txtColor={colors.white}
                           />
+
+{
+                            !isGranted
+                            ?
+                            <Button
+                            disabled={false}
+                            funCallback={() => {
+                              openNotificationSettings()
+                            }}
+                            borderWidth={0.2}
+                            bgColor={colors.gradientLogin1}
+                            // txtColor={colors.primary2}
+                            label={"Activate notifications"}
+                            borderColor={colors.white}
+                            success={true}
+                            style={{ marginTop: "0%", width: "100%" }}
+                            txtColor={colors.white}
+                          />
+                            :
+                            <Button
+                            disabled={false}
+                            funCallback={() => {
+                              openNotificationSettings()
+                            }}
+                            borderWidth={0.2}
+                            bgColor={colors.gradientLogin1}
+                            // txtColor={colors.primary2}
+                            label={"Stop notifications"}
+                            borderColor={colors.white}
+                            success={true}
+                            style={{ marginTop: "0%", width: "100%" }}
+                            txtColor={colors.white}
+                          />
+                          }
+
+
                           <TouchableOpacity
                             onPress={() =>
                               navigation.navigate(
@@ -339,6 +377,8 @@ const TarrotSettings: React.FC<Props> = ({ navigation }): JSX.Element => {
                           >
                             <Text>Privacy Policy & Terms</Text>
                           </TouchableOpacity>
+
+                          
                         </View>
                       </View>
                     </>
@@ -554,6 +594,41 @@ const TarrotSettings: React.FC<Props> = ({ navigation }): JSX.Element => {
                         >
                           <Text>Privacy Policy & Terms</Text>
                         </TouchableOpacity>
+
+                        {
+                            !isGranted
+                            ?
+                            <Button
+                            disabled={false}
+                            funCallback={() => {
+                              openNotificationSettings()
+                            }}
+                            borderWidth={0.2}
+                            bgColor={colors.gradientLogin1}
+                            // txtColor={colors.primary2}
+                            label={"Activate notifications"}
+                            borderColor={colors.white}
+                            success={true}
+                            style={{ marginTop: "0%", width: "100%" }}
+                            txtColor={colors.white}
+                          />
+                            :
+                            <Button
+                            disabled={false}
+                            funCallback={() => {
+                              openNotificationSettings()
+                            }}
+                            borderWidth={0.2}
+                            bgColor={colors.gradientLogin1}
+                            // txtColor={colors.primary2}
+                            label={"Stop notifications"}
+                            borderColor={colors.white}
+                            success={true}
+                            style={{ marginTop: "0%", width: "100%" }}
+                            txtColor={colors.white}
+                          />
+                          }
+
 
                         <View>
                           <View style={styles.infoTextViewStyle}>

@@ -71,13 +71,13 @@ const PersonalReadingDashboard = ({ route }) => {
   const { currentNumber, updateNumber } = useNumberContext();
 
   useEffect(() => {
-    const logScreenView = async () => {
-      await Analytics.logEvent("screen_view", {
-        screen_name: "Personal Reading Dashboard",
-      });
-    };
+    // const logScreenView = async () => {
+    //   await Analytics.logEvent("screen_view", {
+    //     screen_name: "Personal Reading Dashboard",
+    //   });
+    // };
 
-    logScreenView().catch((error) => console.error(error));
+    // logScreenView().catch((error) => console.error(error));
 
     if (isFirstEntry.current) {
       setLoading(true);

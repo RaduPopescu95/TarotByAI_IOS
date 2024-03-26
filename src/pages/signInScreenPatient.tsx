@@ -14,10 +14,7 @@ import { GeneralProps } from "../interfaces/generalProps";
 import { Route } from "@react-navigation/native";
 import { labels } from "../utils/labels";
 import { screenName } from "../utils/screenName";
-import {
-  FirebaseRecaptchaVerifierModal,
-  FirebaseRecaptchaBanner,
-} from "expo-firebase-recaptcha";
+
 import {
   H10fontRegularWhite,
   H6fontRegularBlack,

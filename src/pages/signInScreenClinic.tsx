@@ -19,10 +19,7 @@ import { Route } from "@react-navigation/native";
 import { labels } from "../utils/labels";
 import { screenName } from "../utils/screenName";
 import { LinearGradient } from "expo-linear-gradient";
-import {
-  FirebaseRecaptchaVerifierModal,
-  FirebaseRecaptchaBanner,
-} from "expo-firebase-recaptcha";
+
 import {
   FormErrorMessage,
   H10fontRegularWhite,
